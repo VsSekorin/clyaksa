@@ -12,3 +12,8 @@
   ([size type-key] (new-image size size type-key))
   ([width height type-key]
    (BufferedImage. width height (type-key image-types))))
+
+(defn set-pixel
+  [image x y color]
+  (.setRGB image x y (int color))
+  image)
