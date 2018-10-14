@@ -29,7 +29,8 @@
           color 0x00ff00
           image (new-image 10 10 :argb)]
       (set-pixel image x y color)
-      (is (= (.getRGB image x y) color)))))
+      (is (= (.getRGB image x y) color))
+      (is (not (= (.getRGB image (inc x) y) color))))))
 
 (deftest get-pixel-test
   (testing "get pixel"
@@ -38,4 +39,5 @@
           color 0x00ff00
           image (new-image 10 10 :argb)]
       (.setRGB image x y color)
-      (is (= (get-pixel image x y) color)))))
+      (is (= (get-pixel image x y) color))
+      (is (not (= (get-pixel image (inc x) y) color))))))
