@@ -17,3 +17,7 @@
   [image x y color]
   (.setRGB image x y (int color))
   image)
+
+(defn get-pixel
+  [image x y]
+  (.getRGB image x y))
