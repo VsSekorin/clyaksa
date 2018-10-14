@@ -3,7 +3,7 @@
 
 (def image-types
   {:custom   BufferedImage/TYPE_CUSTOM
-   :rgb       BufferedImage/TYPE_INT_RGB
+   :rgb      BufferedImage/TYPE_INT_RGB
    :argb     BufferedImage/TYPE_INT_ARGB
    :argb-pre BufferedImage/TYPE_INT_ARGB_PRE
    :bgr      BufferedImage/TYPE_INT_BGR})
@@ -17,3 +17,7 @@
   [image x y color]
   (.setRGB image x y (int color))
   image)
+
+(defn get-pixel
+  [image x y]
+  (.getRGB image x y))
