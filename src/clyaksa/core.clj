@@ -2,7 +2,8 @@
   (:require [clojure.string :refer [last-index-of]])
   (:import (java.awt.image BufferedImage)
            (javax.imageio ImageIO)
-           (java.io File)))
+           (java.io File)
+           (java.net URL)))
 
 (def image-types
   {:custom   BufferedImage/TYPE_CUSTOM
@@ -30,3 +31,12 @@
    (save-image image filename (subs filename (inc (last-index-of filename ".")) (.length filename))))
   ([image filename type]
    (ImageIO/write image (name type) (File. filename))))
+
+(defn load-image
+  ([filename]
+   (load-image :file filename))
+  ([type src]
+   (ImageIO/read
+     (case type
+       :file (File. src)
+       :url  (URL. src)))))
