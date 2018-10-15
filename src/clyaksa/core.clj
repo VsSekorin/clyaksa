@@ -1,5 +1,8 @@
 (ns clyaksa.core
-  (:import (java.awt.image BufferedImage)))
+  (:require [clojure.string :refer [last-index-of]])
+  (:import (java.awt.image BufferedImage)
+           (javax.imageio ImageIO)
+           (java.io File)))
 
 (def image-types
   {:custom   BufferedImage/TYPE_CUSTOM
@@ -21,3 +24,9 @@
 (defn get-pixel
   [image x y]
   (.getRGB image x y))
+
+(defn save-image
+  ([image filename]
+   (save-image image filename (subs filename (inc (last-index-of filename ".")) (.length filename))))
+  ([image filename type]
+   (ImageIO/write image (name type) (File. filename))))
