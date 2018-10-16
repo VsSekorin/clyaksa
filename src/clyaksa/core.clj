@@ -40,3 +40,7 @@
      (case type
        :file (File. src)
        :url  (URL. src)))))
+
+(defn get-height
+  [image]
+  (.getHeight image))
