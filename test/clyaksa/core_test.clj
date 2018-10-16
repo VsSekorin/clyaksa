@@ -41,3 +41,9 @@
       (.setRGB image x y color)
       (is (= (get-pixel image x y) color))
       (is (not (= (get-pixel image (inc x) y) color))))))
+
+(deftest get-height-test
+  (testing "get height"
+    (let [height 6
+          image (new-image 10 height :rgb)]
+      (is (= height (get-height image))))))
