@@ -47,3 +47,9 @@
     (let [height 6
           image (new-image 10 height :rgb)]
       (is (= height (get-height image))))))
+
+(deftest get-width-test
+  (testing "get width"
+    (let [width 6
+          image (new-image width 10 :rgb)]
+      (is (= width (get-width image))))))
