@@ -36,11 +36,12 @@
   ([filename]
    (load-image :file filename))
   ([type src]
-   (ImageIO/read
-     (case type
-       :file (File. src)
-       :url  (URL. src)))))
+   (ImageIO/read (case type :file (File. src) :url (URL. src)))))
 
 (defn get-height
   [image]
   (.getHeight image))
+
+(defn get-width
+  [image]
+  (.getWidth image))
