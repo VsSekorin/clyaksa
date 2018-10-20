@@ -45,3 +45,14 @@
 (defn get-width
   [image]
   (.getWidth image))
+
+;;TODO test
+(defn swap-pixel
+  ([image x1 y1 x2 y2]
+   (let [first-pixel (.getRGB image x1 y1)]
+     (-> image
+         (set-pixel x1 y1 (.getRGB image x2 y2))
+         (set-pixel x2 y2 first-pixel))))
+  ([image1 image2 x1 y1 x2 y2]
+   (let [first-pixel (.getRGB image1 x1 y1)]
+     [(set-pixel image1 x1 y1 (.getRGB image2 x2 y2)) (set-pixel image2 x2 y2 first-pixel)])))
