@@ -53,3 +53,26 @@
     (let [width 6
           image (new-image width 10 :rgb)]
       (is (= width (get-width image))))))
+
+(deftest swap-pixel-one-test
+  (testing "swap pixel in one image"
+    (let [image (new-image 10 10 :argb)]
+      (.setRGB image 4 4 100)
+      (.setRGB image 6 6 200)
+      (is (= 100 (.getRGB image 4 4)))
+      (is (= 200 (.getRGB image 6 6)))
+      (swap-pixel image 4 4 6 6)
+      (is (= 200 (.getRGB image 4 4)))
+      (is (= 100 (.getRGB image 6 6))))))
+
+(deftest swap-pixel-two-test
+  (testing "swap pixel in two different images"
+    (let [image1 (new-image 10 10 :argb)
+          image2 (new-image 15 15 :argb)]
+      (.setRGB image1 4 4 100)
+      (.setRGB image2 6 6 200)
+      (is (= 100 (.getRGB image1 4 4)))
+      (is (= 200 (.getRGB image2 6 6)))
+      (swap-pixel image1 image2 4 4 6 6)
+      (is (= 200 (.getRGB image1 4 4)))
+      (is (= 100 (.getRGB image2 6 6))))))
