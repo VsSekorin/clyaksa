@@ -46,7 +46,6 @@
   [image]
   (.getWidth image))
 
-;;TODO test
 (defn swap-pixel
   ([image x1 y1 x2 y2]
    (let [first-pixel (.getRGB image x1 y1)]
