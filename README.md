@@ -1,5 +1,7 @@
 # clyaksa
 
+[![Clojars Project](https://img.shields.io/clojars/v/com.vssekorin/clyaksa.svg)](https://clojars.org/com.vssekorin/clyaksa)
+
 ### Create new image
 
 ```clojure
